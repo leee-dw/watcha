@@ -1,6 +1,6 @@
 export class Model {
   constructor() {
-    
+
   }
 
   loadData(url, handler) {
@@ -11,6 +11,13 @@ export class Model {
       handler(json);
     })
     xhr.send();
+  }
+
+
+  loadDT(url) {
+    axios.get(url).then(function(response) {
+      console.log(response);
+    })
   }
 
 }
