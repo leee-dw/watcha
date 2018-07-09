@@ -4,29 +4,16 @@ import { renderMainSlidesTemplate } from '../template/slidesTmpl.js';
 
 
 export class MainSlidesView {
-  constructor(model) {
-    this.model = model;
+  constructor() {
     this.slidesContainer = $qs('.main__slider__content');
     this.dots = $qsa(".nav__dots__item");
     this.prev = $qs(".nav__prev__arrow-icon");
     this.next = $qs('.nav__next__arrow-icon');
-    this.API = {
-      korean: '&language=ko',
-      api: '?api_key=64391ca210dbae0d44b0a622177ef8d3',
-      state: 'https://api.themoviedb.org/3/discover/movie',
-    }
   }
 
 
   initDots() {
     this.dots[0].classList.add('checked');
-  }
-
-
-  bindInitMainSlidesLoad(handler) {
-    const { state, api, korean } = this.API;
-    const movieDB = state + api + korean;    
-    loadData(movieDB, handler.bind(this));
   }
 
 

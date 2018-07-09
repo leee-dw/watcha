@@ -1,18 +1,22 @@
-export const $on = (target, type, callback) => {
+const $on = (target, type, callback) => {
   target.addEventListener(type, callback)
 }
-
-export const $qs = (selector, scope = document) => {
+const $qs = (selector, scope = document) => {
   return scope.querySelector(selector);
 }
-
-export const $qsa = (selector, scope = document) => {
+const $qsa = (selector, scope = document) => {
   return scope.querySelectorAll(selector);
 }
-
-export const $empty = (target) => {
+const $empty = (target) => {
   while (target.hasChildNodes()) {
     target.removeChild(target.firstChild);
   };
 }
 
+
+export {
+  $on,
+  $qs,
+  $qsa,
+  $empty
+}
