@@ -15,11 +15,17 @@ import { MovieData } from './model/DataURL.js'
 const movieData = new MovieData();
 const model = new Model();
 
+
+
 const categoriesView = new CategoriesView();
 const categoriesController = new CategoriesController(categoriesView);
 
+
+
 const mainSlidesView = new MainSlidesView();
 const mainSlidesController = new MainSlidesController(mainSlidesView, movieData);
+
+
 
 const slideListsView = new SlideListsView();
 const slideListsController = new SlideListsController(slideListsView, movieData);

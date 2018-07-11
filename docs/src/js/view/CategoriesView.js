@@ -13,7 +13,7 @@ export class CategoriesView {
   }
 
   initLoad() {
-    loadData('src/js/db.json', this.renderCategories.bind(this));
+    loadData('http://localhost:3000/categories', this.renderCategories.bind(this));
   }
 
 
@@ -28,9 +28,9 @@ export class CategoriesView {
 
 
   renderCategories(json) {
-    this.filter.insertAdjacentHTML('beforeend', renderCategoriesTemplate(json.categories));
-    this.filterLists.insertAdjacentHTML('beforeend', renderCategoryListsTemplate(json.categories[0].detail));    
-    this.switchCategoriesLists(json.categories);
+    this.filter.insertAdjacentHTML('beforeend', renderCategoriesTemplate(json));
+    this.filterLists.insertAdjacentHTML('beforeend', renderCategoryListsTemplate(json[0].detail));    
+    this.switchCategoriesLists(json);
   }
 
 

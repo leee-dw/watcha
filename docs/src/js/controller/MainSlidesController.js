@@ -17,7 +17,7 @@ export class MainSlidesController {
 
 
   initMainSlidesLoad(handler) {
-    loadData(this.movieData.getNowPlayingURL('ko', 1), handler.bind(this));
+    loadData(this.movieData.getDataURL('ko','now_playing', 1), handler.bind(this));
   }
 
 

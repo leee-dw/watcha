@@ -12,13 +12,39 @@ export class SlideListsController {
     slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
     slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
 
-    this.initSlideListsLoad(this.slideListsView.getMovieListData.bind(this));
+    this.initNowPlayingData(this.getMovieListData.bind(this));
+    this.initSlideCategoriesLoad(this.getCategoriesData.bind(this))
   }
 
-  initSlideListsLoad(handler) {
-    loadData(this.movieData.getNowPlayingURL('ko', 2), handler.bind(this));
+
+  initNowPlayingData(handler) {
+    loadData(this.movieData.getDataURL('ko', 'now_playing', 1), handler.bind(this));
   }
   
+  initPopularData(handler) {
+    loadData(this.movieData.getDataURL('ko', 'popular', 1), handler.bind(this));
+  }
+  
+  initTopRatedData(handler) {
+    loadData(this.movieData.getDataURL('ko', 'top_rated', 1), handler.bind(this));
+  }
+  
+  initLatestData(handler) {
+    loadData(this.movieData.getDataURL('ko', 'latest', 1), handler.bind(this));
+  }
+
+  initSlideCategoriesLoad(handler) {
+    loadData('src/js/db.json', handler.bind(this));
+  }
+
+  getMovieListData(data) {
+    this.slideListsView.bindRenderTemplate(data.results);
+  }
+
+  getCategoriesData(data) {
+    this.slideListsView.bindRenderCategoriesTemplate(data.장르);
+  }
+
 
   showListController() {
     if (this.slideListsView.listCount === 0) {
@@ -37,18 +63,15 @@ export class SlideListsController {
 
 
   clickSlideListPrevBtn() {
-    if (this.slideListsView.listCount < 0) {
-      this.slideListsView.listCount += 120;
-      this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
-    }
+    if (this.slideListsView.listCount < 0) { this.slideListsView.listCount += 75; }
+    this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
   }
 
-  
+
   clickSlideListNextBtn() {
-    if (this.slideListsView.listCount > -240) {
-      this.slideListsView.listCount -= 120;
-      this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
-    }
+    this.slideListsView.listCount > -300 ? this.slideListsView.listCount -= 75 : this.slideListsView.listCount = 0;
+    this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
   }
+
 
 }
