@@ -1,20 +1,29 @@
 export class MovieData {
 
   constructor() {
-    this.url = 'https://api.themoviedb.org/3/movie/';
+    this.url = 'https://api.themoviedb.org/3/';
     this.key = '?api_key=64391ca210dbae0d44b0a622177ef8d3';
   }
 
-  getDataURL(language, status, page) {
-    return `${this.url}${status}${this.key}&language=${language}&page=${page}`
+  getMovieDataURL(language, status, page) {
+    return `${this.url}movie/${status}${this.key}&language=${language}&page=${page}`
   }
 
-  getDetailURL(movieId, language) {
-    return `${this.url + movieId + this.key}&language=${language}`
+  getOldPopDataURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&primary_release_date.lte=2000&sort_by=popularity.desc&vote_count.gte=50`
   }
 
-  getTrailerURL(movieId) {
-    return `${this.url + movieId}/videos${this.key}`;
+  getSciFiMoveURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&with_genres=878&sort_by=vote_average.desc&vote_count.gte=50`
   }
+
+
+  // getDetailURL(movieId, language) {
+  //   return `${this.movie_url + movieId + this.key}&language=${language}`
+  // }
+
+  // getTrailerURL(movieId) {
+  //   return `${this.movie_url + movieId}/videos${this.key}`;
+  // }
 
 }

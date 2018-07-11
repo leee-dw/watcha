@@ -37,6 +37,24 @@ export const renderMainSlidesTemplate = (data) => {
 
 
 
+export const renderSlideHeaderTemplate = (data) => {
+  return data.reduce((acc, crr) => {
+    return acc += `
+    <div class="main__cinemas__list__header">
+      <h5 class="main__cinemas__list__header__title">
+        <span class="main__cinemas__list__header__title__text">${crr.name}</span>
+        <a href="" class="main__cinemas__list__header__show-more">
+          <span class="main__cinemas__list__header__show-more__text">모두 보기</span>
+          <i class="main__cinemas__list__header__show-more__icon material-icons">keyboard_arrow_right</i>
+        </a>
+      </h5>
+    </div>`
+  }, '')
+}
+
+
+
+
 
 export const renderSlideListsTemplate = (data) => {
   return data.reduce((acc, crr) => {
@@ -49,24 +67,9 @@ export const renderSlideListsTemplate = (data) => {
           <span class="contents__item__content__title__text">${crr.title}</span>
         </div>
       </div>
-    </div>`
+    </div>
+    `
   }, '')
 }
 
 
-export const renderSlideHeaderTemplate = (data) => {
-
-  
-  return data.reduce((acc, crr) => {
-    return acc += `
-    <div class="main__cinemas__list__header">
-      <h5 class="main__cinemas__list__header__title">
-        <span class="main__cinemas__list__header__title__text">${crr.name}</span>
-        <a href="/#" class="main__cinemas__list__header__show-more">
-          <span class="main__cinemas__list__header__show-more__text">모두 보기</span>
-          <i class="main__cinemas__list__header__show-more__icon material-icons">keyboard_arrow_right</i>
-        </a>
-      </h5>
-    </div>`
-  }, '')
-}

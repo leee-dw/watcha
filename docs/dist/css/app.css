@@ -487,6 +487,9 @@ a {
 .checked {
   background-color: #fff; }
 
+#show-btn {
+  display: block; }
+
 .main__cinemas {
   padding: 2.25vw 0; }
 

@@ -6,38 +6,50 @@ import { renderSlideListsTemplate, renderSlideHeaderTemplate } from '../template
 export class SlideListsView {
   constructor() {
     this.cinemaSlideLists = $qs('.main__cinemas__list');
-    this.cinemaSlideBodyLists = $qs('.main__cinemas__list__body__slider');
-    this.cinemaSlideContents = $qs('.main__cinemas__list__body__slider__contents');
-    this.slideListPrevBtn = $qs('.cinema__list__prev-btn');
-    this.slideListNextBtn = $qs('.cinema__list__next-btn');
+    this.cinemaSlideBodyLists = $qsa('.main__cinemas__list__body__slider');
+    this.cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
+    this.slideListPrevBtn = $qsa('.cinema__list__prev-btn');
+    this.slideListNextBtn = $qsa('.cinema__list__next-btn');
     this.listCount = 0;
   }
 
   bindRenderTemplate(data) {
-    this.cinemaSlideContents.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+    this.cinemaSlideContents.forEach((elem, idx) => {    
+      this.cinemaSlideContents[0].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+      this.cinemaSlideContents[1].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+      this.cinemaSlideContents[2].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+    })
   }
-  
+
+
+
+
+
   bindRenderCategoriesTemplate(data) {
-    this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSlideHeaderTemplate(data))
+    // this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSlideHeaderTemplate(data))
   }
 
   bindShowListController(handler) {
-    this.cinemaSlideBodyLists.addEventListener('mouseover', handler);
+    this.cinemaSlideBodyLists.forEach(elem => elem.addEventListener('mouseover', handler));
   }
 
 
   bindHideListController(handler) {
-    this.cinemaSlideBodyLists.addEventListener('mouseleave', handler);
+    this.cinemaSlideBodyLists.forEach(elem => elem.addEventListener('mouseleave', handler));
   }
 
 
   bindClickSlideListPrevBtn(handler) {
-    this.slideListPrevBtn.addEventListener('click', handler);
+    this.slideListPrevBtn.forEach(elem => {
+      elem.addEventListener('click', handler);
+    })
   }
 
 
   bindClickSlideListNextBtn(handler) {
-    this.slideListNextBtn.addEventListener('click', handler);
+    this.slideListNextBtn.forEach(elem => {
+      elem.addEventListener('click', handler)
+    });
   }
 
 
