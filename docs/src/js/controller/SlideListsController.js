@@ -44,20 +44,9 @@ export class SlideListsController {
   }
 
 
-
-
   getMovieListData(data) {
-    this.slideListsView.bindRenderTemplate(data.results);
+    return this.slideListsView.bindRenderTemplate(data.results);
   }
-
-
-
-
-
-
-
-
-
 
 
   getCategoriesData(data) {
@@ -67,28 +56,25 @@ export class SlideListsController {
 
   showListController(event) {
     if (this.slideListsView.listCount === 0) {
-      console.log(event.currentTarget);
-      
       event.currentTarget.childNodes[5].id = 'show-btn';
     } else {
-      // this.slideListsView.slideListPrevBtn.style.display = 'block';
-      // this.slideListsView.slideListNextBtn.style.display = 'block';
+      event.currentTarget.childNodes[3].id = 'show-btn';
+      event.currentTarget.childNodes[5].id = 'show-btn';
     }
   }
 
 
   hideListController(event) {
+    event.currentTarget.childNodes[3].id = '';
     event.currentTarget.childNodes[5].id = '';
-    // this.slideListsView.slideListPrevBtn.style.display = 'none';
-    // this.slideListsView.slideListNextBtn.style.display = 'none';
   }
 
 
-  clickSlideListPrevBtn() {
+  clickSlideListPrevBtn(event) {
     if (this.slideListsView.listCount < 0) {
       this.slideListsView.listCount += 75;
     }
-    this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
+    event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
   }
 
 
@@ -97,10 +83,8 @@ export class SlideListsController {
       this.slideListsView.listCount -= 75;
     } else {
       this.slideListsView.listCount = 0;
-    };    
+    };
     event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
-    // this.slideListsView.cinemaSlideContents.style.transform = `translate3d(${this.slideListsView.listCount}%, 0px, 0px)`;
   }
-
 
 }

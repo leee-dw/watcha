@@ -15,9 +15,7 @@ export class SlideListsView {
 
   bindRenderTemplate(data) {
     this.cinemaSlideContents.forEach((elem, idx) => {    
-      this.cinemaSlideContents[0].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-      this.cinemaSlideContents[1].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-      this.cinemaSlideContents[2].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+      elem.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
     })
   }
 
@@ -35,6 +33,7 @@ export class SlideListsView {
 
 
   bindHideListController(handler) {
+ 
     this.cinemaSlideBodyLists.forEach(elem => elem.addEventListener('mouseleave', handler));
   }
 
