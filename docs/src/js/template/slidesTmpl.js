@@ -37,7 +37,7 @@ export const renderMainSlidesTemplate = (data) => {
 
 
 
-export const renderSlideHeaderTemplate = (data) => {
+export const renderSlideHeaderTemplate = (data, url) => {
   return data.reduce((acc, crr) => {
     return acc += `
     <div class="main__cinemas__list__header">
@@ -48,8 +48,34 @@ export const renderSlideHeaderTemplate = (data) => {
           <i class="main__cinemas__list__header__show-more__icon material-icons">keyboard_arrow_right</i>
         </a>
       </h5>
-    </div>`
+    </div>
+    `
   }, '')
+
+  let body = url.reduce((acc, crr) => {
+    return acc += `
+    <div class="main__cinemas__list__body">
+      <div class="main__cinemas__list__body__container">
+        <div class="main__cinemas__list__body__slider">  
+          <div class="main__cinemas__list__body__slider__contents">
+            <div class="main__cinemas__list__body__slider__contents__item">
+              <div class="contents__item__content">
+                <img class="contents__item__content__still-cut" src="https://image.tmdb.org/t/p/w500${crr.backdrop_path}"></img>
+                <div class="contents__item__content__overlay"></div>
+                <div class="contents__item__content__title">
+                  <span class="contents__item__content__title__text">${crr.title}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="cinema__list__prev-btn"><i class="material-icons cinema__list__prev-btn__icon"> arrow_back_ios</i></button>
+          <button class="cinema__list__next-btn"><i class="material-icons cinema__list__next-btn__icon"> arrow_forward_ios</i></button>
+        </div>
+      </div>
+    </div>
+    `
+  })
+
 }
 
 
@@ -71,5 +97,3 @@ export const renderSlideListsTemplate = (data) => {
     `
   }, '')
 }
-
-

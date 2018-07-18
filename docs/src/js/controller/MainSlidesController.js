@@ -2,16 +2,14 @@ import { loadData } from '../async.js';
 import { $on, $qs, $qsa } from '../utils/helper.js';
 
 export class MainSlidesController {
-  constructor(mainSlidesView, movieData) {
-    this.movieData = movieData;
+  constructor(mainSlidesView, slideListsModel, movieData) {
+    this.slideListsModel = slideListsModel;
     this.mainSlidesView = mainSlidesView;
-
+    this.movieData = movieData;
     this.mainSlidesView.bindClickPrevBtn(this.clickPrevButton.bind(this));
     this.mainSlidesView.bindClickNextBtn(this.clickNextButton.bind(this));
     this.mainSlidesView.bindHandleDots(this.handleDots.bind(this));
-
     this.initMainSlidesLoad(this.getMovieData.bind(this));
-    
     this.currentIdx = 0;
   }
 
