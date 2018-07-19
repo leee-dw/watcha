@@ -16,15 +16,15 @@ export class SlideListsController {
 
 
   getCategoriesData(data) {
-    this.slideListsView.bindRenderCategoriesTemplate(data.특징);
-    this.slideListsModel.getOldPopMovieData(this.getMovieListData.bind(this));
+    this.slideListsView.bindRenderSlideTemplate(data.특징);
+    this.slideListsModel.getSciFiMovieData(this.getMovieListData.bind(this));
     this.slideListsView.bindShowListController(this.showListController.bind(this));
     this.slideListsView.bindHideListController(this.hideListController.bind(this));
   }
 
 
   getMovieListData(data) {
-    return this.slideListsView.bindRenderTemplate(data.results);
+    return this.slideListsView.bindRenderSlideListsTemplate(data.results);
   }
 
 

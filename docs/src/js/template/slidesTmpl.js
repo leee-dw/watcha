@@ -37,7 +37,7 @@ export const renderMainSlidesTemplate = (data) => {
 
 
 
-export const renderSlideHeaderTemplate = (data, url) => {
+export const renderSliderTemplate = (data, url) => {
   return data.reduce((acc, crr) => {
     return acc += `
     <div class="main__cinemas__list__header">

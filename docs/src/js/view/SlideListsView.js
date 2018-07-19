@@ -1,6 +1,6 @@
 import { loadData } from '../async.js';
 import { $on, $qs, $qsa } from '../utils/helper.js';
-import { renderSlideListsTemplate, renderSlideHeaderTemplate } from '../template/slidesTmpl.js';
+import { renderSliderTemplate, renderSlideListsTemplate } from '../template/slidesTmpl.js';
 
 
 export class SlideListsView {
@@ -10,7 +10,7 @@ export class SlideListsView {
     this.slideListNextBtn = $qsa('.cinema__list__next-btn');
   }
 
-  bindRenderTemplate(data) {
+  bindRenderSlideListsTemplate(data) {
     let cinemaSlideContents = document.querySelectorAll('.main__cinemas__list__body__slider__contents');
 
     cinemaSlideContents.forEach(element => {
@@ -20,8 +20,8 @@ export class SlideListsView {
   }
 
 
-  bindRenderCategoriesTemplate(data) {
-    this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSlideHeaderTemplate(data));
+  bindRenderSlideTemplate(data) {
+    this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSliderTemplate(data));
   }
 
 
