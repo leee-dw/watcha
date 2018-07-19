@@ -6,17 +6,17 @@ import { renderSlideListsTemplate, renderSlideHeaderTemplate } from '../template
 export class SlideListsView {
   constructor() {
     this.cinemaSlideLists = $qs('.main__cinemas__list');
-    this.cinemaSlideBodyLists = $qsa('.main__cinemas__list__body__slider');
-    this.cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
     this.slideListPrevBtn = $qsa('.cinema__list__prev-btn');
     this.slideListNextBtn = $qsa('.cinema__list__next-btn');
   }
 
   bindRenderTemplate(data) {
     let cinemaSlideContents = document.querySelectorAll('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents.forEach(elem => {
-      elem.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+
+    cinemaSlideContents.forEach(element => {
+      element.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
     })
+
   }
 
 
@@ -26,16 +26,16 @@ export class SlideListsView {
 
 
   bindShowListController(handler) {
-    // console.log(this.cinemaSlideBodyLists);
-
-    // this.cinemaSlideBodyLists.forEach(element => {
-    //   element.addEventListener('mouseover', handler);
-    // });
+    let cinemaSlideBodyLists = document.querySelectorAll('.main__cinemas__list__body__slider')
+    cinemaSlideBodyLists.forEach(element => {
+      element.addEventListener('mouseover', handler);
+    });
   }
 
 
   bindHideListController(handler) {
-    this.cinemaSlideBodyLists.forEach(element => {
+    let cinemaSlideBodyLists = document.querySelectorAll('.main__cinemas__list__body__slider')
+    cinemaSlideBodyLists.forEach(element => {
       element.addEventListener('mouseleave', handler);
     });
   }

@@ -2,20 +2,27 @@ import { loadData } from '../async.js';
 
 export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
+
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
-    // slideListsView.bindShowListController(this.showListController.bind(this));
-    // slideListsView.bindHideListController(this.hideListController.bind(this));
-    slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
-    slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
+
     this.initSlideCategoriesLoad(this.getCategoriesData.bind(this))
-    this.slideListsModel.initPopularData(this.getMovieListData.bind(this));
+    // this.slideListsModel.initPopularData(this.getMovieListData.bind(this));
+
+    // slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
+    // slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
     this.listCount = 0;
   }
 
+
   getCategoriesData(data) {
     this.slideListsView.bindRenderCategoriesTemplate(data.특징);
+    this.slideListsModel.getOldPopMovieData(this.getMovieListData.bind(this));
+    this.slideListsView.bindShowListController(this.showListController.bind(this));
+    this.slideListsView.bindHideListController(this.hideListController.bind(this));
   }
+
+
   getMovieListData(data) {
     return this.slideListsView.bindRenderTemplate(data.results);
   }
@@ -26,17 +33,9 @@ export class SlideListsController {
   }
 
 
-
-
   showListController(event) {
-    // if (this.slideListsView.listCount === 0) {
-    //   event.currentTarget.childNodes[5].id = 'show-btn';
-    // } else {
-    //   event.currentTarget.childNodes[3].id = 'show-btn';
-    //   event.currentTarget.childNodes[5].id = 'show-btn';
-    // }
-    console.log(event);
-    
+    event.currentTarget.childNodes[3].id = 'show-btn'
+    event.currentTarget.childNodes[5].id = 'show-btn'
   }
 
 

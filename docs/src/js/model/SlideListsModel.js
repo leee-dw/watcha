@@ -5,23 +5,23 @@ export class SlideListsModel {
     this.movieData = movieData;
   }
 
-  initNowPlayingData(handler) {
+  getNowPlayingData(handler) {
     loadData(this.movieData.getMovieDataURL('ko', 'now_playing', 1), handler.bind(this));
   }
 
-  initPopularData(handler) {
+  getPopularData(handler) {
     loadData(this.movieData.getMovieDataURL('ko', 'popular', 1), handler.bind(this));
   }
 
-  initTopRatedData(handler) {
+  getTopRatedData(handler) {
     loadData(this.movieData.getMovieDataURL('ko', 'top_rated', 1), handler.bind(this));
   }
 
-  initOldPopMovieData(handler) {
+  getOldPopMovieData(handler) {
     loadData(this.movieData.getOldPopDataURL('ko'), handler.bind(this));
   }
 
-  initSciFiMovieData(handler) {
+  getSciFiMovieData(handler) {
     loadData(this.movieData.getSciFiMoveURL('ko'), handler.bind(this));
   }
 

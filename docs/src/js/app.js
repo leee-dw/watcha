@@ -12,20 +12,16 @@ import { SlideListsController } from './controller/SlideListsController.js';
 import { MovieData } from './model/DataURL.js';
 import { SlideListsModel } from './model/SlideListsModel.js';
 
-
 const movieData = new MovieData();
 const model = new Model();
 const slideListsModel = new SlideListsModel(movieData)
-
 
 const categoriesView = new CategoriesView();
 const categoriesController = new CategoriesController(categoriesView);
 
 
-
 const mainSlidesView = new MainSlidesView();
 const mainSlidesController = new MainSlidesController(mainSlidesView, slideListsModel, movieData);
-
 
 
 const slideListsView = new SlideListsView();
