@@ -13,19 +13,24 @@ export class SlideListsView {
   }
 
   bindRenderTemplate(data) {
-    this.cinemaSlideContents[0].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+    let cinemaSlideContents = document.querySelectorAll('.main__cinemas__list__body__slider__contents');
+    cinemaSlideContents.forEach(elem => {
+      elem.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
+    })
   }
 
 
   bindRenderCategoriesTemplate(data) {
-    // this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSlideHeaderTemplate(data));
+    this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSlideHeaderTemplate(data));
   }
 
 
   bindShowListController(handler) {
-    this.cinemaSlideBodyLists.forEach(element => {
-      element.addEventListener('mouseover', handler);
-    });
+    // console.log(this.cinemaSlideBodyLists);
+
+    // this.cinemaSlideBodyLists.forEach(element => {
+    //   element.addEventListener('mouseover', handler);
+    // });
   }
 
 
