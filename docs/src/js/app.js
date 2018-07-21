@@ -1,5 +1,3 @@
-import { Model } from './model/Model.js';
-
 import { CategoriesView } from './view/CategoriesView.js';
 import { CategoriesController } from './controller/CategoriesController.js';
 
@@ -13,7 +11,7 @@ import { MovieData } from './model/DataURL.js';
 import { SlideListsModel } from './model/SlideListsModel.js';
 
 const movieData = new MovieData();
-const model = new Model();
+
 const slideListsModel = new SlideListsModel(movieData)
 
 const categoriesView = new CategoriesView();

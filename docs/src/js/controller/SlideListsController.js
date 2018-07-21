@@ -2,34 +2,29 @@ import { loadData } from '../async.js';
 
 export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
-
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
-
-    this.initSlideCategoriesLoad(this.getCategoriesData.bind(this))
-    // this.slideListsModel.initPopularData(this.getMovieListData.bind(this));
-
+    this.initSlideLoad(this.getCategoriesData)
     // slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
     // slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
-    this.listCount = 0;
+    // this.listCount = 0;
+  }
+
+  initSlideLoad(handler) {
+    loadData('src/js/db.json', handler.bind(this));
   }
 
 
   getCategoriesData(data) {
     this.slideListsView.bindRenderSlideTemplate(data.특징);
-    this.slideListsModel.getSciFiMovieData(this.getMovieListData.bind(this));
-    this.slideListsView.bindShowListController(this.showListController.bind(this));
-    this.slideListsView.bindHideListController(this.hideListController.bind(this));
+    this.slideListsModel.getTopRatedData(this.getMovieListData.bind(this));
+    this.slideListsView.bindShowListController(this.showListController);
+    this.slideListsView.bindHideListController(this.hideListController);
   }
 
 
   getMovieListData(data) {
     return this.slideListsView.bindRenderSlideListsTemplate(data.results);
-  }
-
-
-  initSlideCategoriesLoad(handler) {
-    loadData('src/js/db.json', handler.bind(this));
   }
 
 

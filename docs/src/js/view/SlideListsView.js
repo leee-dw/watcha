@@ -11,7 +11,7 @@ export class SlideListsView {
   }
 
   bindRenderSlideListsTemplate(data) {
-    let cinemaSlideContents = document.querySelectorAll('.main__cinemas__list__body__slider__contents');
+    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
 
     cinemaSlideContents.forEach(element => {
       element.insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
@@ -26,15 +26,13 @@ export class SlideListsView {
 
 
   bindShowListController(handler) {
-    let cinemaSlideBodyLists = document.querySelectorAll('.main__cinemas__list__body__slider')
-    cinemaSlideBodyLists.forEach(element => {
-      element.addEventListener('mouseover', handler);
-    });
+    let cinemaSlideBodyLists = $qsa('.main__cinemas__list__body__slider')
+    cinemaSlideBodyLists.forEach(element => element.addEventListener('mouseover', handler));
   }
 
 
   bindHideListController(handler) {
-    let cinemaSlideBodyLists = document.querySelectorAll('.main__cinemas__list__body__slider')
+    let cinemaSlideBodyLists = $qsa('.main__cinemas__list__body__slider')
     cinemaSlideBodyLists.forEach(element => {
       element.addEventListener('mouseleave', handler);
     });

@@ -14,7 +14,11 @@ export class SlideListsModel {
   }
 
   getTopRatedData(handler) {
-    loadData(this.movieData.getMovieDataURL('ko', 'top_rated', 1), handler.bind(this));
+    let i = 1;
+    while (i <= 5) {
+      console.log(this.movieData.getMovieDataURL('ko', 'top_rated', i));
+      loadData(this.movieData.getMovieDataURL('ko', 'top_rated', i++), handler.bind(this));
+    }
   }
 
   getOldPopMovieData(handler) {
