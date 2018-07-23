@@ -17,13 +17,27 @@ export class MovieData {
     return `${this.url}discover/movie${this.key}&language=${language}&with_genres=878&sort_by=vote_average.desc&vote_count.gte=50`
   }
 
+  getDramaURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&with_genres=18&primary_release_year=2014`
+  }
+  
+  getComedyURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&with_genres=35&primary_release_year=2014`
+  }
+
+  getBradPittURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&with_people=287&vote_count.gte=1000&sort_by=popularity.asc`
+  }
+
 
   // getDetailURL(movieId, language) {
   //   return `${this.movie_url + movieId + this.key}&language=${language}`
   // }
 
+
   // getTrailerURL(movieId) {
   //   return `${this.movie_url + movieId}/videos${this.key}`;
   // }
+  
 
 }
