@@ -29,6 +29,13 @@ export class MovieData {
     return `${this.url}discover/movie${this.key}&language=${language}&with_people=287&vote_count.gte=1000&sort_by=popularity.asc`
   }
 
+  getKieslowskiURL(language) {
+    return `${this.url}discover/movie${this.key}&language=${language}&with_crew=1126&sort_by=popularity.desc`
+  }
+
+  getDavidLynchURL(language) { 
+    return `${this.url}discover/movie${this.key}&language=${language}&with_crew=5602&sort_by=popularity.desc`
+  }
 
   // getDetailURL(movieId, language) {
   //   return `${this.movie_url + movieId + this.key}&language=${language}`

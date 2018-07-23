@@ -17,13 +17,14 @@ export class SlideListsController {
 
   getCategoriesData(data) {
     this.slideListsView.bindRenderSlideTemplate(data.genres);
-    this.slideListsModel.getTopRatedData(this.getFirstMovieListData.bind(this));
+    this.slideListsModel.getDavidLynchMovieData(this.getFirstMovieListData.bind(this));
     this.slideListsModel.getOldPopMovieData(this.getSecondMovieListData.bind(this));
     this.slideListsModel.getSciFiMovieData(this.getThridMovieListData.bind(this));
     this.slideListsModel.getPopularData(this.getFourthMovieListData.bind(this));
     this.slideListsModel.getDramaMovieData(this.getFifthMovieListData.bind(this));
     this.slideListsModel.getComedyMovieData(this.getSixthMovieListData.bind(this));
     this.slideListsModel.getBradPittMovieData(this.getSeventhMovieListData.bind(this));
+    this.slideListsModel.getKieslowskiMovieData(this.getEighthMovieListData.bind(this));
     this.slideListsView.bindShowListController(this.showListController);
     this.slideListsView.bindHideListController(this.hideListController);
   }
@@ -33,7 +34,7 @@ export class SlideListsController {
     return this.slideListsView.bindRenderFirstSlideListsTemplate(data.results);
   }
 
-  
+
   getSecondMovieListData(data) {
     return this.slideListsView.bindRenderSecondSlideListsTemplate(data.results);
   }
@@ -61,6 +62,12 @@ export class SlideListsController {
 
   getSeventhMovieListData(data) {
     return this.slideListsView.bindRenderSeventhSlideListsTemplate(data.results);
+  }
+
+
+  getEighthMovieListData(data) {
+    return this.slideListsView.bindRenderEighthSlideListsTemplate(data.results);
+    
   }
 
 

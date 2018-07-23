@@ -20,7 +20,9 @@ export class MainSlidesController {
 
 
   getMovieData(data) {
-    const slidesMovieData = data.results.slice().sort(() => Math.random() - 0.5).slice(0, 3);
+    let mainArray = [];
+    data.results.forEach(elem => !!elem.overview && mainArray.push(elem))
+    const slidesMovieData = mainArray.slice().sort(() => Math.random() - 0.5).slice(0, 3);
     this.mainSlidesView.bindRenderTemplate(slidesMovieData);
     this.initSlides();
     this.mainSlidesView.initDots();

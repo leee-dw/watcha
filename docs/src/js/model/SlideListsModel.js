@@ -44,5 +44,14 @@ export class SlideListsModel {
     loadData(this.movieData.getBradPittURL('ko'), handler.bind(this));
   }
 
+  getKieslowskiMovieData(handler) {
+    loadData(this.movieData.getKieslowskiURL('ko'), handler.bind(this));
+  }
+
+  getDavidLynchMovieData(handler) {
+    loadData(this.movieData.getDavidLynchURL('ko'), handler.bind(this));
+  }
+
+
 
 }
