@@ -36,6 +36,10 @@ export class MovieData {
   getDavidLynchURL(language) { 
     return `${this.url}discover/movie${this.key}&language=${language}&with_crew=5602&sort_by=popularity.desc`
   }
+  
+  getGodardURL(language) { 
+    return `${this.url}discover/movie${this.key}&language=${language}&with_crew=3776&sort_by=popularity.desc`
+  }
 
   // getDetailURL(movieId, language) {
   //   return `${this.movie_url + movieId + this.key}&language=${language}`
