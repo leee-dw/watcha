@@ -4,20 +4,25 @@ export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
-    this.initSlideLoad(this.getCategoriesData)
+    this.initSlideLoad(this.getSlideData);
 
-
+    this.count = {
+      'first': 0,
+      'second': 0,
+      'third': 0,
+      'fourth': 0,
+      'fifth': 0,
+      'sixth': 0,
+      'seventh': 0,
+      'eighth': 0
+    }
   }
 
   initSlideLoad(handler) {
     loadData('src/js/db.json', handler.bind(this));
   }
 
-
-
-
-
-  getCategoriesData(data) {
+  getSlideData(data) {
     this.slideListsView.bindRenderSlideTemplate(data.genres);
     this.slideListsModel.getDavidLynchMovieData(this.getFirstMovieListData.bind(this));
     this.slideListsModel.getOldPopMovieData(this.getSecondMovieListData.bind(this));
@@ -30,10 +35,8 @@ export class SlideListsController {
 
     this.slideListsView.bindShowListController(this.showListController);
     this.slideListsView.bindHideListController(this.hideListController);
-
-    this.slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn);
-    this.slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn);
-
+    this.slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
+    this.slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
   }
 
 
@@ -74,32 +77,43 @@ export class SlideListsController {
 
   getEighthMovieListData(data) {
     return this.slideListsView.bindRenderEighthSlideListsTemplate(data.results);
-
   }
 
 
-
-
-  showListController(event) {
-    event.currentTarget.childNodes[3].id = 'show-btn'
-    event.currentTarget.childNodes[5].id = 'show-btn'
+  showListController() {
+    this.childNodes[3].id = 'show-btn'
+    this.childNodes[5].id = 'show-btn'
   }
 
 
-  hideListController(event) {
-    event.currentTarget.childNodes[3].id = '';
-    event.currentTarget.childNodes[5].id = '';
+  hideListController() {
+    this.childNodes[3].id = '';
+    this.childNodes[5].id = '';
   }
 
 
-  clickSlideListPrevBtn(event) {
-
+  clickSlideListPrevBtn() {
+    const target = event.currentTarget.parentNode.childNodes[1].classList[1];
+    let slideNums = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth']
+    slideNums.forEach((element) => {
+      if (target === `${element}-list` && this.count[element] < 0) {
+        this.count[element] += 75;
+        event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.count[element]}%, 0px, 0px)`;
+      }
+    })
   }
 
 
-  clickSlideListNextBtn(event) {    
-    event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(-100%, 0px, 0px)`
+  clickSlideListNextBtn() {
+    const target = event.currentTarget.parentNode.childNodes[1].classList[1];
+    let slideNums = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth']
+    slideNums.forEach((element) => {
+      if (this.count[element] <= -300) { this.count[element] = 0 };
+      if (target === `${element}-list` && this.count[element] > -300) {
+        this.count[element] -= 75;
+        event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.count[element]}%, 0px, 0px)`;
+      }
+    })
   }
-
 
 }
