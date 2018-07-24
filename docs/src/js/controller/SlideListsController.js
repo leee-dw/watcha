@@ -5,9 +5,8 @@ export class SlideListsController {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
     this.initSlideLoad(this.getCategoriesData)
-    // slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
-    // slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
-    // this.listCount = 0;
+
+
   }
 
   initSlideLoad(handler) {
@@ -15,18 +14,26 @@ export class SlideListsController {
   }
 
 
+
+
+
   getCategoriesData(data) {
     this.slideListsView.bindRenderSlideTemplate(data.genres);
     this.slideListsModel.getDavidLynchMovieData(this.getFirstMovieListData.bind(this));
     this.slideListsModel.getOldPopMovieData(this.getSecondMovieListData.bind(this));
     this.slideListsModel.getSciFiMovieData(this.getThridMovieListData.bind(this));
-    this.slideListsModel.getPopularData(this.getFourthMovieListData.bind(this));
-    this.slideListsModel.getDramaMovieData(this.getFifthMovieListData.bind(this));
+    this.slideListsModel.getGodardMovieData(this.getFourthMovieListData.bind(this));
+    this.slideListsModel.getPopularData(this.getFifthMovieListData.bind(this));
     this.slideListsModel.getComedyMovieData(this.getSixthMovieListData.bind(this));
     this.slideListsModel.getBradPittMovieData(this.getSeventhMovieListData.bind(this));
     this.slideListsModel.getKieslowskiMovieData(this.getEighthMovieListData.bind(this));
+
     this.slideListsView.bindShowListController(this.showListController);
     this.slideListsView.bindHideListController(this.hideListController);
+
+    this.slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn);
+    this.slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn);
+
   }
 
 
@@ -67,7 +74,7 @@ export class SlideListsController {
 
   getEighthMovieListData(data) {
     return this.slideListsView.bindRenderEighthSlideListsTemplate(data.results);
-    
+
   }
 
 
@@ -86,30 +93,13 @@ export class SlideListsController {
 
 
   clickSlideListPrevBtn(event) {
-    if (this.listCount < 0) { this.listCount += 75 };
-    event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.listCount}%, 0px, 0px)`;
+
   }
 
 
-  clickSlideListNextBtn(event) {
-    // if (this.listCount > -300) {
-    //   this.listCount -= 80
-    // } else {
-    //   this.listCount = 0;
-    // }
-
-    // var slidesContents = document.querySelectorAll('.main__cinemas__list__body__slider__contents');
-    // slidesContents.forEach((element, idx) => {
-    //   if (element === event.currentTarget.parentNode.childNodes[1]) {
-    //     console.log(slidesContents[idx]);
-    //   }
-    // })
-
-    // console.log(event.currentTarget.parentNode.childNodes[1]);
-
-
-
-    event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(${this.listCount}%, 0px, 0px)`;
+  clickSlideListNextBtn(event) {    
+    event.currentTarget.parentNode.childNodes[1].style.transform = `translate3d(-100%, 0px, 0px)`
   }
+
 
 }

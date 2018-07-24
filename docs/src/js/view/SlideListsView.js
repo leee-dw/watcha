@@ -6,10 +6,7 @@ import { renderSliderTemplate, renderSlideListsTemplate } from '../template/slid
 export class SlideListsView {
   constructor() {
     this.cinemaSlideLists = $qs('.main__cinemas__list');
-    this.slideListPrevBtn = $qsa('.cinema__list__prev-btn');
-    this.slideListNextBtn = $qsa('.cinema__list__next-btn');
   }
-
 
   bindRenderFirstSlideListsTemplate(data) {
     let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
@@ -48,13 +45,13 @@ export class SlideListsView {
 
 
   bindRenderSeventhSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');    
+    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
     cinemaSlideContents[6].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
   }
 
 
   bindRenderEighthSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');    
+    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
     cinemaSlideContents[7].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
   }
 
@@ -62,7 +59,6 @@ export class SlideListsView {
   bindRenderSlideTemplate(data) {
     this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSliderTemplate(data));
   }
-
 
 
 
@@ -81,17 +77,20 @@ export class SlideListsView {
 
 
   bindClickSlideListPrevBtn(handler) {
-    this.slideListPrevBtn.forEach(element => {
+    let slideListPrevBtn = $qsa('.cinema__list__prev-btn');
+    console.log(slideListPrevBtn);
+    slideListPrevBtn.forEach(element => {
       element.addEventListener('click', handler);
     })
   }
 
 
   bindClickSlideListNextBtn(handler) {
-    this.slideListNextBtn.forEach(element => {
+    let slideListNextBtn = $qsa('.cinema__list__next-btn');
+    console.log(slideListNextBtn);
+    slideListNextBtn.forEach(element => {
       element.addEventListener('click', handler)
     });
   }
-
 
 }

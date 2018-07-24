@@ -52,6 +52,8 @@ export class SlideListsModel {
     loadData(this.movieData.getDavidLynchURL('ko'), handler.bind(this));
   }
 
-
+  getGodardMovieData(handler) {
+    loadData(this.movieData.getGodardURL('ko'), handler.bind(this));
+  }
 
 }
