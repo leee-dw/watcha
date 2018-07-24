@@ -595,6 +595,10 @@ a {
     margin-bottom: 8vw; } }
 
 .main__cinemas__list__body__slider {
+  overflow-x: hidden;
+  overflow-x: -moz-scrollbars-none;
+  overflow-y: hidden;
+  overflow-y: -moz-scrollbars-none;
   padding: 0 50px;
   position: relative; }
 
