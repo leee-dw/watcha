@@ -74,7 +74,7 @@ export class SlideListsController {
 
   clickSlideListPrevBtn() {
     const eventTarget = event.currentTarget.parentNode.childNodes[1]
-    eventTarget.prepend(eventTarget.children[eventTarget.children.length - 1]);
+    eventTarget.prepend(eventTarget.children[i]);
   }
 
   clickSlideListNextBtn() {
