@@ -5,6 +5,11 @@ export class SlideListsController {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
     this.initSlideLoad(this.getSlideData);
+    this.state = {
+      startIdx: 0,
+      currentIdx: 0,
+      totalIdx: 0
+    }
   }
 
   initSlideLoad(handler) {
@@ -73,13 +78,13 @@ export class SlideListsController {
   }
 
   clickSlideListPrevBtn() {
-    const eventTarget = event.currentTarget.parentNode.childNodes[1]
-    eventTarget.prepend(eventTarget.children[i]);
+    const target = event.currentTarget.parentNode.childNodes[1]
+    target.prepend(target.children[target.children.length - 1]);
   }
 
   clickSlideListNextBtn() {
-    const eventTarget = event.currentTarget.parentNode.childNodes[1]
-    eventTarget.append(eventTarget.children[0]);
+    const target = event.currentTarget.parentNode.childNodes[1]
+    target.append(target.children[0]);
   }
 
 }
