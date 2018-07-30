@@ -1,3 +1,4 @@
+import { $on, $qs, $qsa } from '../utils/helper.js';
 import { loadData } from '../async.js';
 
 export class SlideListsController {
@@ -5,11 +6,18 @@ export class SlideListsController {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
     this.initSlideLoad(this.getSlideData);
-    this.state = {
-      startIdx: 0,
-      idx: -120,
-      currIdx: 0
+    this.count = {
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
     }
+
+
   }
 
   initSlideLoad(handler) {
@@ -36,42 +44,42 @@ export class SlideListsController {
 
 
   getFirstMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderFirstSlideListsTemplate(data.results);
   }
 
   getSecondMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderSecondSlideListsTemplate(data.results);
   }
 
   getThridMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderThirdSlideListsTemplate(data.results);
   }
 
   getFourthMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderFourthSlideListsTemplate(data.results);
   }
 
   getFifthMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderFifthSlideListsTemplate(data.results);
   }
 
   getSixthMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderSixthSlideListsTemplate(data.results);
   }
 
   getSeventhMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderSeventhSlideListsTemplate(data.results);
   }
 
   getEighthMovieListData(data) {
-    data.results = data.results.splice(0, 10);
+    data.results = data.results.splice(0, 15);
     return this.slideListsView.bindRenderEighthSlideListsTemplate(data.results);
   }
 
@@ -89,15 +97,26 @@ export class SlideListsController {
 
   clickSlideListPrevBtn() {
     const target = event.currentTarget.parentNode.childNodes[1]
-    target.prepend(target.children[target.children.length - 1]);
+    let slideContentWidth = $qs('.main__cinemas__list__body__slider__contents__item');
+    target.style.transform = `translateX(${0}px)`
+
   }
 
 
   clickSlideListNextBtn() {
     const target = event.currentTarget.parentNode.childNodes[1]
-    // target.append(target.children[0])
-    target.style.transform = translateX()
+    let slideContents = $qsa('.main__cinemas__list__body__slider__contents__item', target);
+    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').clientWidth;
+    let slideList = $qsa('.main__cinemas__list__body__slider__contents');
 
+
+    slideList.forEach((elem, idx) => {
+      if (elem === target) {
+        this.count[idx]++;
+        this.count[idx] = this.count[idx] % 3;
+        target.style.transform = `translateX(-${slideContentsWidth * 5 * this.count[idx]}px)`;
+      }
+    })
   }
 
 }

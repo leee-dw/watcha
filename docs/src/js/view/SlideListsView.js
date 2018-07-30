@@ -14,7 +14,7 @@ export class SlideListsView {
   }
 
 
-  bindRenderFirstSlideListsTemplate(data) {
+  bindRenderFirstSlideListsTemplate(data) {   
     let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
     cinemaSlideContents[0].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
 
