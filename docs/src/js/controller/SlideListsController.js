@@ -1,23 +1,23 @@
 import { $on, $qs, $qsa } from '../utils/helper.js';
 import { loadData } from '../async.js';
 
+
 export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
     this.initSlideLoad(this.getSlideData);
-    this.count = {
-      0: 0,
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0,
-      6: 0,
-      7: 0,
-    }
-
-
+    // this.count = {
+    //   0: 1,
+    //   1: 1,
+    //   2: 1,
+    //   3: 1,
+    //   4: 1,
+    //   5: 1,
+    //   6: 1,
+    //   7: 1,
+    // }
+    this.count = 0;
   }
 
   initSlideLoad(handler) {
@@ -96,25 +96,46 @@ export class SlideListsController {
 
 
   clickSlideListPrevBtn() {
-    const target = event.currentTarget.parentNode.childNodes[1]
-    let slideContentWidth = $qs('.main__cinemas__list__body__slider__contents__item');
-    target.style.transform = `translateX(${0}px)`
-
+    const target = event.currentTarget.parentNode.childNodes[1];
+    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').offsetWidth;
+    target.prepend(target.children[target.children.length - 1]);
   }
 
 
   clickSlideListNextBtn() {
-    const target = event.currentTarget.parentNode.childNodes[1]
+    this.count++;
+    this.count = this.count % 3;
+
+    const target = event.currentTarget.parentNode.childNodes[1];
+    let slideLists = $qsa('.main__cinemas__list__body__slider__contents');
+    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').offsetWidth * 5;
     let slideContents = $qsa('.main__cinemas__list__body__slider__contents__item', target);
-    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').clientWidth;
-    let slideList = $qsa('.main__cinemas__list__body__slider__contents');
+    let nodeArr = [...slideContents];
+    let arr = [];
 
+    for (var i = 0; i < slideContents.length; i += 5) {
+      arr.push(nodeArr.slice(i, i + 5));
+    }
 
-    slideList.forEach((elem, idx) => {
-      if (elem === target) {
-        this.count[idx]++;
-        this.count[idx] = this.count[idx] % 3;
-        target.style.transform = `translateX(-${slideContentsWidth * 5 * this.count[idx]}px)`;
+    slideLists.forEach((list, idx) => {
+      if (list === target) {
+        arr[0].forEach(elem => {
+          elem.classList.add('anime');
+          elem.style.transform = `translateX(${slideContentsWidth}px)`;
+          list.append(elem)
+        })
+
+        arr[1].forEach(elem => {
+          elem.classList.add('anime');
+          // elem.style.transform = `translateX(-${slideContentsWidth}px)`;
+          list.prepend(elem)
+        })
+
+        arr[2].forEach(elem => {
+          elem.classList.add('anime');
+          elem.style.transform = '';
+
+        })
       }
     })
   }
