@@ -595,16 +595,11 @@ a {
     margin-bottom: 8vw; } }
 
 .main__cinemas__list__body__slider {
-  overflow-x: hidden;
-  overflow-x: -moz-scrollbars-none;
-  overflow-y: hidden;
-  overflow-y: -moz-scrollbars-none;
   padding: 0 50px;
   position: relative; }
 
 .main__cinemas__list__body__slider__contents {
-  white-space: nowrap;
-  overflow-x: visible; }
+  white-space: nowrap; }
 
 .anime {
   transition: all 500ms ease-in; }

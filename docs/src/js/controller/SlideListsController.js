@@ -105,34 +105,29 @@ export class SlideListsController {
     let arr = [];
 
     for (var i = 0; i < slideContents.length; i += 5) {
-      arr.push(nodeArr.slice(i, i + 5));
+      arr.push(nodeArr.slice(i, i + 5).reverse())
     }
-
-
     slideLists.forEach((list, idx) => {
-
       if (list === target) {
-        this.count[idx]--;
+        this.count[idx]++;
         this.count[idx] = this.count[idx] % 4;
+        target.style.transform = `translateX(${slideContentsWidth * this.count[idx]}px)`;
+        target.classList.add('anime');
 
-        arr[0].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.prepend(clone);
-        })
-
-
-        arr[1].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.prepend(clone);
-        })
-
-
-        arr[2].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.prepend(clone);
-          target.style.transform = `translateX(${slideContentsWidth * this.count[idx]}px)`;
-          !this.count[idx] ? target.classList.remove('anime') : target.classList.add('anime');
-        })
+        if (this.count[idx] == 1) {
+          arr[2].forEach(elem => {
+            let clone = elem.cloneNode(true);
+            list.prepend(clone);
+          })
+        }
+        setTimeout(() => {
+          this.count[idx] = 0
+          target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+          target.classList.remove('anime');
+          for (var i = 0; i < 5; i++) {
+            list.removeChild(list.children[list.children.length - 1]);
+          }
+        }, 525);
       }
 
     })
@@ -155,33 +150,29 @@ export class SlideListsController {
     for (var i = 0; i < slideContents.length; i += 5) {
       arr.push(nodeArr.slice(i, i + 5))
     }
-
     slideLists.forEach((list, idx) => {
-
       if (list === target) {
         this.count[idx]++;
         this.count[idx] = this.count[idx] % 4;
+        target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+        target.classList.add('anime');
 
-        arr[0].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.append(clone);
-          target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
-          !this.count[idx] ? target.classList.remove('anime') : target.classList.add('anime');
-        })
+        if (this.count[idx] == 3) {
+          arr[0].forEach(elem => {
+            let clone = elem.cloneNode(true);
+            list.append(clone);
+          })
+          setTimeout(() => {
+            this.count[idx] = 0
+            target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+            target.classList.remove('anime');
+            for (var i = 0; i < 5; i++) {
+              list.removeChild(list.children[list.children.length - 1]);
+            }
+          }, 525);
+        }
 
-
-        arr[1].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.append(clone);
-        })
-
-
-        arr[2].forEach(elem => {
-          let clone = elem.cloneNode(true);
-          list.append(clone);
-        })
       }
-
     })
   }
 
