@@ -52,7 +52,8 @@ export const renderSliderTemplate = (data, url) => {
     <div class="main__cinemas__list__body">
       <div class="main__cinemas__list__body__container">
         <div class="main__cinemas__list__body__slider">  
-          <div class="main__cinemas__list__body__slider__contents"></div>
+          <div class="main__cinemas__list__body__slider__contents">
+          </div>
           <button class="cinema__list__prev-btn"><i class="material-icons cinema__list__prev-btn__icon"> arrow_back_ios</i></button>
           <button class="cinema__list__next-btn"><i class="material-icons cinema__list__next-btn__icon"> arrow_forward_ios</i></button>
         </div>

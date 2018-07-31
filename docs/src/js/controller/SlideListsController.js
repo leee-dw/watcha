@@ -96,19 +96,62 @@ export class SlideListsController {
 
 
   clickSlideListPrevBtn() {
-    const target = event.currentTarget.parentNode.childNodes[1];
-    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').offsetWidth;
-    target.prepend(target.children[target.children.length - 1]);
+    // this.count++;
+    // this.count = this.count % 4;
+    // const target = event.currentTarget.parentNode.childNodes[1];
+    // let slideLists = $qsa('.main__cinemas__list__body__slider__contents');
+    // let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').clientWidth * 5;
+    // let slideContents = $qsa('.main__cinemas__list__body__slider__contents__item', target);
+    // let nodeArr = [...slideContents];
+    // let arr = [];
+
+    // for (var i = 0; i < slideContents.length; i += 5) {
+    // arr.push(nodeArr.slice(i, i + 5));
+    // }
+
+    // slideLists.forEach((list, idx) => {
+    //   if (list === target) {
+    //     arr[0].forEach(elem => {
+    //       let clone = elem.cloneNode(true);
+    //       list.prepend(clone);
+    //       target.style.transform = `translateX(${slideContentsWidth * this.count}px)`;
+    //       if (this.count === 2) {
+    //         target.classList.remove('anime')
+    //       } else {
+    //         target.classList.add('anime')
+    //       }
+
+    //     })
+
+    //     arr[1].forEach(elem => {
+    //       let clone = elem.cloneNode(true);
+    //       list.prepend(clone);
+    //     })
+
+    //     arr[2].forEach(elem => {
+    //       let clone = elem.cloneNode(true);
+    //       list.prepend(clone);
+    //     })
+    //   }
+
+
+    // })
+
+    // target.prepend(target.children[target.children.length - 1]);
   }
+
+
+
+
 
 
   clickSlideListNextBtn() {
     this.count++;
-    this.count = this.count % 3;
+    this.count = this.count % 4;
 
     const target = event.currentTarget.parentNode.childNodes[1];
     let slideLists = $qsa('.main__cinemas__list__body__slider__contents');
-    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').offsetWidth * 5;
+    let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').clientWidth * 5;
     let slideContents = $qsa('.main__cinemas__list__body__slider__contents__item', target);
     let nodeArr = [...slideContents];
     let arr = [];
@@ -119,24 +162,26 @@ export class SlideListsController {
 
     slideLists.forEach((list, idx) => {
       if (list === target) {
+        
         arr[0].forEach(elem => {
-          elem.classList.add('anime');
-          elem.style.transform = `translateX(${slideContentsWidth}px)`;
-          list.append(elem)
+          let clone = elem.cloneNode(true);
+          list.append(clone);
+          target.style.transform = `translateX(-${slideContentsWidth * this.count}px)`;
+          !this.count ? target.classList.remove('anime') : target.classList.add('anime');
         })
 
         arr[1].forEach(elem => {
-          elem.classList.add('anime');
-          // elem.style.transform = `translateX(-${slideContentsWidth}px)`;
-          list.prepend(elem)
+          let clone = elem.cloneNode(true);
+          list.append(clone);
         })
 
         arr[2].forEach(elem => {
-          elem.classList.add('anime');
-          elem.style.transform = '';
-
+          let clone = elem.cloneNode(true);
+          list.append(clone);
         })
       }
+
+
     })
   }
 
