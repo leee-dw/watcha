@@ -108,10 +108,16 @@ export class SlideListsController {
       arr.push(nodeArr.slice(i, i + 5).reverse())
     }
 
+
+
+
+
     slideLists.forEach((list, idx) => {
       if (list === target) {
         this.count[idx]++;
         this.count[idx] = this.count[idx] % 4;
+        target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+        target.classList.add('anime');
 
         if (this.count[idx] == 1) {
           arr[2].forEach(elem => {
@@ -120,13 +126,34 @@ export class SlideListsController {
             target.classList.remove('anime');
             target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
           })
+
           setTimeout(() => {
-            this.count[idx] = 0;
+            this.count[idx] = 0
             target.classList.add('anime');
-            target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+            target.style.transform = `translateX(${slideContentsWidth * this.count[idx]}px)`;
+
             for (var i = 0; i < 5; i++) {
               list.removeChild(list.children[list.children.length - 1]);
             }
+          }, 10);
+        }
+        if (this.count[idx] == 3) {
+          arr[2].forEach(elem => {
+            let clone = elem.cloneNode(true);
+            list.prepend(clone);
+            target.classList.remove('anime');
+          })
+          arr[1].forEach(elem => {
+            let clone = elem.cloneNode(true);
+            list.prepend(clone);
+            target.classList.remove('anime');
+          })
+
+          setTimeout(() => {
+            this.count[idx] = 0
+            target.classList.add('anime');
+            target.style.transform = `translateX(${slideContentsWidth * this.count[idx]}px)`;
+            for (var i = 0; i < 5; i++) {list.removeChild(list.children[list.children.length - 1]);}
           }, 10);
         }
       }
@@ -152,7 +179,6 @@ export class SlideListsController {
       arr.push(nodeArr.slice(i, i + 5))
     }
 
-
     slideLists.forEach((list, idx) => {
       if (list === target) {
         this.count[idx]++;
@@ -161,7 +187,6 @@ export class SlideListsController {
         target.classList.add('anime');
 
         if (this.count[idx] == 3) {
-
           arr[0].forEach(elem => {
             let clone = elem.cloneNode(true);
             list.append(clone);
@@ -169,13 +194,10 @@ export class SlideListsController {
 
           setTimeout(() => {
             this.count[idx] = 0
-            target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
             target.classList.remove('anime');
-
-            for (var i = 0; i < 5; i++) {
-              list.removeChild(list.children[list.children.length - 1]);
-            }
-          }, 510);
+            target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
+            for (var i = 0; i < 5; i++) {list.removeChild(list.children[list.children.length - 1])}
+          }, 525);
         }
 
       }
