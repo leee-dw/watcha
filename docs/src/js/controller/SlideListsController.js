@@ -108,10 +108,6 @@ export class SlideListsController {
       arr.push(nodeArr.slice(i, i + 5).reverse())
     }
 
-
-
-
-
     slideLists.forEach((list, idx) => {
       if (list === target) {
         this.count[idx]++;
@@ -132,18 +128,6 @@ export class SlideListsController {
               list.removeChild(list.children[list.children.length - 1]);
             }
           }, 10);
-
-
-          // target.style.transform = `translateX(${slideContentsWidth}px)`;
-
-          //   setTimeout(() => {
-          //     this.count[idx] = 3
-          //     target.style.transform = `translateX(${slideContentsWidth * this.count[idx]}px)`;
-          //     target.classList.remove('anime');
-          //     for (var i = 0; i < 5; i++) {
-          //       list.removeChild(list.children[list.children.length - 1]);
-          //     }
-          //   }, 525);
         }
       }
 
@@ -169,16 +153,12 @@ export class SlideListsController {
     }
 
 
-
-
-
     slideLists.forEach((list, idx) => {
       if (list === target) {
         this.count[idx]++;
         this.count[idx] = this.count[idx] % 4;
         target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
         target.classList.add('anime');
-        console.log(this.count[idx]);
 
         if (this.count[idx] == 3) {
 
