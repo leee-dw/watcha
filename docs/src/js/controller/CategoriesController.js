@@ -2,16 +2,8 @@ export class CategoriesController {
   constructor(categoriesView, model) {
     this.model = model;
     this.categoriesView = categoriesView;
-    this.collapseExpandCategories();
+    this.categoriesView.expandCategories(this.categoriesView.categoriesNavigation, this.categoriesView.categoriesLink, this.categoriesView.categoriesBox);
+    this.categoriesView.collapseCategories(this.categoriesView.categoriesNavigation, this.categoriesView.categoriesBox);
     this.categoriesView.initLoad();
   }
-    
-  
-  collapseExpandCategories() {
-    const { expandCategories, collapseCategories, categoriesNavigation, categoriesLink, categoriesBox } = this.categoriesView;
-    expandCategories(categoriesNavigation, categoriesLink, categoriesBox);
-    collapseCategories(categoriesNavigation, categoriesBox);
-  };
-
 }
-
