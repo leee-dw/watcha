@@ -6,7 +6,7 @@ export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
-    this.initSlideLoad(this.getSlideData);
+    this.initSlideLoad(this.setSlideData);
     this.count = {
       0: 0,
       1: 0,
@@ -24,7 +24,7 @@ export class SlideListsController {
     loadData('src/js/db.json', handler.bind(this));
   }
 
-  getSlideData(data) {
+  setSlideData(data) {
     this.slideListsView.bindRenderSlideTemplate(data.genres);
     this.slideListsModel.getDavidLynchMovieData(this.getFirstMovieListData.bind(this));
     this.slideListsModel.getOldPopMovieData(this.getSecondMovieListData.bind(this));
@@ -117,8 +117,7 @@ export class SlideListsController {
 
         if (this.count[idx] == 1) {
           this.count[idx]--;
-
-          arr[2].forEach(elem => {
+          arr[arr.length - 1].forEach(elem => {
             let clone = elem.cloneNode(true);
             list.prepend(clone);
           })
@@ -126,7 +125,8 @@ export class SlideListsController {
           setTimeout(() => {
             target.classList.add('anime');
             target.style.transform = `translateX(${-slideContentsWidth * this.count[idx]}px)`;
-            for (let i = 0; i < 5; i++) { list.removeChild(list.children[list.children.length - 1]) };
+            for (let i = 0; i < 5; i++) { 
+              list.removeChild(list.children[list.children.length - 1]) };
           }, 5);
 
         } else {
