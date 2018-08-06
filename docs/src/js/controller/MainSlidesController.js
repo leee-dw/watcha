@@ -2,21 +2,20 @@ import { loadData } from '../async.js';
 import { $on, $qs, $qsa } from '../utils/helper.js';
 
 export class MainSlidesController {
-  constructor(mainSlidesView, slideListsModel, movieData) {
+  constructor(mainSlidesView, slideListsModel) {
     this.slideListsModel = slideListsModel;
     this.mainSlidesView = mainSlidesView;
-    this.movieData = movieData;
+    this.slideListsModel.getBradPittMovieData(this.getMovieData.bind(this));
     this.mainSlidesView.bindClickPrevBtn(this.clickPrevButton.bind(this));
     this.mainSlidesView.bindClickNextBtn(this.clickNextButton.bind(this));
     this.mainSlidesView.bindHandleDots(this.handleDots.bind(this));
-    this.slideListsModel.getBradPittMovieData(this.getMovieData.bind(this));
     this.currentIdx = 0;
   }
 
 
   getMovieData(data) {
     let mainArray = [];
-    data.results.forEach(elem => !!elem.overview && mainArray.push(elem))
+    data.results.forEach(elem => !!elem.overview && mainArray.push(elem));
     const slidesMovieData = mainArray.slice().sort(() => Math.random() - 0.5).slice(0, 3);
     this.mainSlidesView.bindRenderTemplate(slidesMovieData);
     this.initSlides();
@@ -39,9 +38,7 @@ export class MainSlidesController {
 
   clickPrevButton() {
     this.currentIdx--;
-    if (this.currentIdx < 0) {
-      this.currentIdx = this.totalIdx - 1
-    };
+    if (this.currentIdx < 0) this.currentIdx = this.totalIdx - 1;
     this.handleSlide(this.currentIdx);
   }
 
