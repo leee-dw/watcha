@@ -6,7 +6,9 @@ export class SlideListsController {
   constructor(slideListsView, slideListsModel) {
     this.slideListsView = slideListsView;
     this.slideListsModel = slideListsModel;
-    this.initSlideLoad(this.setSlideData);
+    this.initSlideTitleLoad(this.setSlideTitle);
+    this.initSlideTitleLoad(this.setSlideController);
+    this.initSlideTitleLoad(this.setSlideData);
     this.count = {
       0: 0,
       1: 0,
@@ -20,12 +22,25 @@ export class SlideListsController {
 
   }
 
-  initSlideLoad(handler) {
+  initSlideTitleLoad(handler) {
     loadData('src/js/db.json', handler.bind(this));
   }
 
-  setSlideData(data) {
+
+
+  setSlideTitle(data) {
     this.slideListsView.bindRenderSlideTemplate(data.genres);
+  }
+
+  setSlideController() {
+    this.slideListsView.bindShowListController(this.showListController);
+    this.slideListsView.bindHideListController(this.hideListController);
+    this.slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
+    this.slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
+  }
+
+
+  setSlideData() {
     this.slideListsModel.getDavidLynchMovieData(this.getFirstMovieListData.bind(this));
     this.slideListsModel.getOldPopMovieData(this.getSecondMovieListData.bind(this));
     this.slideListsModel.getSciFiMovieData(this.getThridMovieListData.bind(this));
@@ -34,54 +49,58 @@ export class SlideListsController {
     this.slideListsModel.getComedyMovieData(this.getSixthMovieListData.bind(this));
     this.slideListsModel.getBradPittMovieData(this.getSeventhMovieListData.bind(this));
     this.slideListsModel.getKieslowskiMovieData(this.getEighthMovieListData.bind(this));
-
-    this.slideListsView.bindShowListController(this.showListController);
-    this.slideListsView.bindHideListController(this.hideListController);
-
-    this.slideListsView.bindClickSlideListPrevBtn(this.clickSlideListPrevBtn.bind(this));
-    this.slideListsView.bindClickSlideListNextBtn(this.clickSlideListNextBtn.bind(this));
   }
+
+
 
 
   getFirstMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderFirstSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 0);
   }
+
 
   getSecondMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderSecondSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 1);
   }
+
 
   getThridMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderThirdSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 2);
   }
+
 
   getFourthMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderFourthSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 3);
   }
+
 
   getFifthMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderFifthSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 4);
   }
+
 
   getSixthMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderSixthSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 5);
   }
+
 
   getSeventhMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderSeventhSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 6);
   }
+
 
   getEighthMovieListData(data) {
     data.results.splice(15, 5);
-    return this.slideListsView.bindRenderEighthSlideListsTemplate(data.results);
+    return this.slideListsView.bindRenderSlidesListsTemplate(data.results, 7);
   }
+
 
   showListController() {
     this.childNodes[3].id = 'show-btn'
@@ -125,8 +144,9 @@ export class SlideListsController {
           setTimeout(() => {
             target.classList.add('anime');
             target.style.transform = `translateX(${-slideContentsWidth * this.count[idx]}px)`;
-            for (let i = 0; i < 5; i++) { 
-              list.removeChild(list.children[list.children.length - 1]) };
+            for (let i = 0; i < 5; i++) {
+              list.removeChild(list.children[list.children.length - 1])
+            };
           }, 5);
 
         } else {

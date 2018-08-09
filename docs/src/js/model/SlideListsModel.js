@@ -3,6 +3,19 @@ import { loadData } from '../async.js';
 export class SlideListsModel {
   constructor(movieData) {
     this.movieData = movieData;
+    // this.slideListsController = slideListsController;
+  }
+
+
+  setSlideData() {
+    this.getDavidLynchMovieData(this.SlideListsController.getFirstMovieListData.bind(this));
+    this.getOldPopMovieData(this.SlideListsController.getSecondMovieListData.bind(this));
+    this.getSciFiMovieData(this.SlideListsController.getThridMovieListData.bind(this));
+    this.getGodardMovieData(this.SlideListsController.getFourthMovieListData.bind(this));
+    this.getPopularData(this.SlideListsController.getFifthMovieListData.bind(this));
+    this.getComedyMovieData(this.SlideListsController.getSixthMovieListData.bind(this));
+    this.getBradPittMovieData(this.SlideListsController.getSeventhMovieListData.bind(this));
+    this.getKieslowskiMovieData(this.SlideListsController.getEighthMovieListData.bind(this));
   }
 
 
@@ -34,12 +47,12 @@ export class SlideListsModel {
   getDramaMovieData(handler) {
     loadData(this.movieData.getDramaURL('ko'), handler.bind(this));
   }
-  
+
 
   getComedyMovieData(handler) {
     loadData(this.movieData.getComedyURL('ko'), handler.bind(this));
   }
-  
+
   getBradPittMovieData(handler) {
     loadData(this.movieData.getBradPittURL('ko'), handler.bind(this));
   }

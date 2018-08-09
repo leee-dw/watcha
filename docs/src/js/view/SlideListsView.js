@@ -13,60 +13,10 @@ export class SlideListsView {
     this.cinemaSlideLists.insertAdjacentHTML('afterbegin', renderSliderTemplate(data));
   }
 
-
-  bindRenderFirstSlideListsTemplate(data) {   
+  
+  bindRenderSlidesListsTemplate(data, idx) {
     let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[0].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderSecondSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[1].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderThirdSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[2].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderFourthSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[3].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderFifthSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[4].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderSixthSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[5].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderSeventhSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[6].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
-  }
-
-
-  bindRenderEighthSlideListsTemplate(data) {
-    let cinemaSlideContents = $qsa('.main__cinemas__list__body__slider__contents');
-    cinemaSlideContents[7].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
-
+    cinemaSlideContents[idx].insertAdjacentHTML('beforeend', renderSlideListsTemplate(data));
   }
 
 
@@ -101,4 +51,3 @@ export class SlideListsView {
 
 
 }
-

@@ -118,7 +118,6 @@
 
 
 .contents__item__content
-  
   position: relative
   cursor: pointer
   transition: transform 0.4s cubic-bezier(0.5, 0, 0.1, 1) 0s
@@ -142,6 +141,7 @@
   white-space: nowrap
   background: linear-gradient(to top, rgba(18,18,24,0.7) 10%, transparent 80%)
   z-index: 1
+  opacity: 1
 
 
 .contents__item__content__title
@@ -151,8 +151,16 @@
   width: 100%
   color: #fff
   word-wrap: break-word
-  // font-weight: 300
   opacity: 0.9
   white-space: pre-line
   @for $i from 0 to $screen-size-count 
     +screen-fz-pd(#{$i})
+
+
+.point-out
+  background-color: #888
+  opacity: 0.3
+
+  
+.stretch
+  width: 25%

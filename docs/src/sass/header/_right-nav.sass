@@ -58,13 +58,19 @@
 .right-nav__search
   float: right
   line-height: 80px
+  height: 80px
   min-width: 92.5px
   text-align: center
+  display: flex
+  justify-content: center
+  align-items: center
+
   
 
 
 
 .right-nav__search-btn
+  // display: none
   border: 0 none transparent
   outline: 0
   background: 0
@@ -84,3 +90,28 @@
 .right-nav__search-btn__icon
   vertical-align: middle
   font-size: 1.25rem
+
+
+
+.right-nav__search-input
+  display: flex
+  position: relative
+  background: #fff
+
+.right-nav__search-input-clicked
+  display: flex
+  color: #888
+  position: absolute
+  top: 19%
+  left: 5%
+
+
+.right-nav__search-text
+  padding-left: 44px
+  width: 220px
+  height: 36px
+  outline: none
+  border: 0
+  font-size: 1rem
+  color: #888
+  font-weight: 400

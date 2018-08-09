@@ -18,19 +18,25 @@ export class CategoriesView {
 
 
   expandCategories(selector, link, box) {
-    $on(selector, 'mouseover', event => event.target === link && box.classList.add('active'));
+    $on(selector, 'mouseover', event => {
+      event.target === link && box.classList.add('active')
+    });
   }
 
 
   collapseCategories(selector, box) {
-    $on(selector, 'mouseleave', event => { if (event.target === box || selector) box.classList.remove('active'); })
+    $on(selector, 'mouseleave', event => {
+      if (event.target === box || event.target === selector) {
+        box.classList.remove('active')
+      };
+    })
   }
 
 
-  renderCategories(json) {    
-    this.filter.insertAdjacentHTML('beforeend', renderCategoriesTemplate(json.categories));
-    this.filterLists.insertAdjacentHTML('beforeend', renderCategoryListsTemplate(json.categories[0].detail));
-    this.switchCategoriesLists(json.categories);
+  renderCategories(data) {
+    this.filter.insertAdjacentHTML('beforeend', renderCategoriesTemplate(data.categories));
+    this.filterLists.insertAdjacentHTML('beforeend', renderCategoryListsTemplate(data.categories[0].detail));
+    this.switchCategoriesLists(data.categories);
   }
 
 
@@ -41,7 +47,7 @@ export class CategoriesView {
       const filterByCategories = (object) => {
         return event.target.innerText === object.key && object.key;
       };
-      
+
       let categoryListsTemplate = renderCategoryListsTemplate(category.filter(filterByCategories)[0].detail);
       return this.filterLists.insertAdjacentHTML('beforeend', categoryListsTemplate);
     });

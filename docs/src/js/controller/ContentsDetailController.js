@@ -4,25 +4,24 @@ export class ContentsDetailController {
   constructor(contentsDetailView) {
     this.contentsDetailView = contentsDetailView;
     this.cinemaList = $qs('.main__cinemas__list');
-
     this.getInit();
   }
 
 
   getInit() {
-    this.cinemaList.addEventListener('mouseover', this.expandDetail.bind(this));
+    $on(this.cinemaList, 'mouseover', this.pointLists.bind(this));
   }
 
-  expandDetail(event) {
+
+  pointLists(event) {
     if (event.target.className == 'contents__item__content__overlay') {
-      event.target.style.backgroundColor = '#888';
-      event.target.style.opacity = '0.3';
-
-      event.target.addEventListener('mouseleave', e => {
-        event.target.style.backgroundColor = '';
-        event.target.style.opacity = '1'
-      })
-    }
+      event.target.classList.add('point-out');
+      $on(event.target, 'mouseleave', (e) => {
+        event.target.classList.remove('point-out');
+        event.target.parentNode.parentNode.classList.remove('stretch')
+      });
+    };
   }
+
 
 }
