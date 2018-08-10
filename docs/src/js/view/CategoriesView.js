@@ -19,7 +19,8 @@ export class CategoriesView {
 
   expandCategories(selector, link, box) {
     $on(selector, 'mouseover', event => {
-      event.target === link && box.classList.add('active')
+      event.target === link && box.classList.add('active');
+      setTimeout(() => event.target === link && box.classList.add('opacity'), 10);
     });
   }
 
@@ -27,7 +28,8 @@ export class CategoriesView {
   collapseCategories(selector, box) {
     $on(selector, 'mouseleave', event => {
       if (event.target === box || event.target === selector) {
-        box.classList.remove('active')
+        box.classList.remove('opacity');
+        setTimeout(() => box.classList.remove('active'), 450);
       };
     })
   }

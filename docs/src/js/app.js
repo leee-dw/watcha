@@ -8,6 +8,7 @@ import { CategoriesController } from './controller/CategoriesController.js';
 import { MainSlidesController } from './controller/MainSlidesController.js';
 import { SlideListsController } from './controller/SlideListsController.js';
 import { ContentsDetailController } from './controller/ContentsDetailController.js';
+import { SearchController } from './controller/SearchController.js';
 
 import { MovieData } from './model/DataURL.js';
 import { SlideListsModel } from './model/SlideListsModel.js';
@@ -22,6 +23,7 @@ const movieData = new MovieData();
 const slideListsModel = new SlideListsModel(movieData)
 
 const slideListsController = new SlideListsController(slideListsView, slideListsModel);
-const categoriesController = new CategoriesController(categoriesView, searchView);
+const categoriesController = new CategoriesController(categoriesView);
 const mainSlidesController = new MainSlidesController(mainSlidesView, slideListsModel, movieData);
-const contentsDetailController = new ContentsDetailController(contentsDetailView)
+const contentsDetailController = new ContentsDetailController(contentsDetailView);
+const searchController = new SearchController(searchView);

@@ -10,6 +10,7 @@ export class ContentsDetailController {
 
   getInit() {
     $on(this.cinemaList, 'mouseover', this.pointLists.bind(this));
+    $on(this.cinemaList, 'click', this.clickLists.bind(this));
   }
 
 
@@ -21,6 +22,17 @@ export class ContentsDetailController {
         event.target.parentNode.parentNode.classList.remove('stretch')
       });
     };
+  }
+
+  clickLists(event) {
+    if (event.target.classList.contains('contents__item__content__overlay')) {
+      event.target.parentNode.children[0].classList.add('wide');
+      console.log(event.target.parentNode.children[0].classList);
+      
+      
+
+    };
+
   }
 
 
