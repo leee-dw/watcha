@@ -1,38 +1,32 @@
-import { $on, $qs, $qsa } from '../utils/helper.js';
+import { $on, $qs, $qsa, $nextAll, $prevAll } from '../utils/helper.js';
 
 export class ContentsDetailController {
   constructor(contentsDetailView) {
     this.contentsDetailView = contentsDetailView;
     this.cinemaList = $qs('.main__cinemas__list');
-    this.getInit();
+    this.initPointer();
   }
 
-
-  getInit() {
+  initPointer() {
     $on(this.cinemaList, 'mouseover', this.pointLists.bind(this));
-    $on(this.cinemaList, 'click', this.clickLists.bind(this));
   }
-
 
   pointLists(event) {
-    if (event.target.className == 'contents__item__content__overlay') {
+    if (event.target.classList.contains('contents__item__content__overlay')) {
       event.target.classList.add('point-out');
-      $on(event.target, 'mouseleave', (e) => {
+      $prevAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-negative-translate'));
+      $nextAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-positive-translate'));
+
+      $on(event.target, 'mouseleave', (evt) => {
         event.target.classList.remove('point-out');
-        event.target.parentNode.parentNode.classList.remove('stretch')
+        event.target.parentNode.parentNode.classList.remove('stretch', 'has-negative-translate', 'has-positive-translate');
+        $nextAll(event.target.parentNode.parentNode)
+          .concat($prevAll(event.target.parentNode.parentNode))
+          .forEach(el => {
+            el.classList.remove('has-negative-translate', 'has-positive-translate');
+          });
       });
     };
-  }
-
-  clickLists(event) {
-    if (event.target.classList.contains('contents__item__content__overlay')) {
-      event.target.parentNode.children[0].classList.add('wide');
-      console.log(event.target.parentNode.children[0].classList);
-      
-      
-
-    };
-
   }
 
 

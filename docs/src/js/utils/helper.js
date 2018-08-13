@@ -19,10 +19,34 @@ const $empty = (target) => {
   };
 }
 
+const $nextAll = (elem, selector) => {
+  let siblings = [];
+  elem = elem.nextElementSibling;
+  while (elem) {
+    if (elem.matches(selector)) break;
+    siblings.push(elem);
+    elem = elem.nextElementSibling;
+  }
+  return siblings;
+};
+
+const $prevAll = (elem, selector) => {
+  let siblings = [];
+  elem = elem.previousElementSibling;
+  while (elem) {
+    if (elem.matches(selector)) break;
+    siblings.push(elem);
+    elem = elem.previousElementSibling;
+  }
+  return siblings;
+};
+
 
 export {
   $on,
   $qs,
   $qsa,
-  $empty
+  $empty,
+  $nextAll,
+  $prevAll
 }
