@@ -1032,7 +1032,12 @@ a {
   transition: width 3s; }
 
 .wide {
-  width: 125%;
   transition: width 1s; }
+
+.has-positive-translate {
+  transform: translate(45px); }
+
+.has-negative-translate {
+  transform: translate(-45px); }
 
 /*# sourceMappingURL=app.css.map */
