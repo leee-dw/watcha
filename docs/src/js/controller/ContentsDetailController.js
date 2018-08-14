@@ -1,11 +1,14 @@
 import { $on, $qs, $qsa, $nextAll, $prevAll } from '../utils/helper.js';
 
+
 export class ContentsDetailController {
   constructor(contentsDetailView) {
     this.contentsDetailView = contentsDetailView;
     this.cinemaList = $qs('.main__cinemas__list');
     this.initPointer();
   }
+
+
 
   initPointer() {
     $on(this.cinemaList, 'mouseover', this.pointLists.bind(this));
@@ -16,10 +19,9 @@ export class ContentsDetailController {
       event.target.classList.add('point-out');
       $prevAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-negative-translate'));
       $nextAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-positive-translate'));
-
       $on(event.target, 'mouseleave', (evt) => {
         event.target.classList.remove('point-out');
-        event.target.parentNode.parentNode.classList.remove('stretch', 'has-negative-translate', 'has-positive-translate');
+        event.target.parentNode.parentNode.classList.remove('has-negative-translate', 'has-positive-translate');
         $nextAll(event.target.parentNode.parentNode)
           .concat($prevAll(event.target.parentNode.parentNode))
           .forEach(el => {

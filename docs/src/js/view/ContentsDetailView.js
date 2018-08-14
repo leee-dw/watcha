@@ -6,6 +6,5 @@ export class ContentsDetailView {
   }
   bindExpandDetail(handler) {
     this.cinemaSlideLists.addEventListener('mouseover', handler);
-    
   }
 }

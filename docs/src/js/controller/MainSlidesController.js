@@ -1,4 +1,3 @@
-import { loadData } from '../async.js';
 import { $on, $qs, $qsa } from '../utils/helper.js';
 
 export class MainSlidesController {

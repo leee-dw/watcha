@@ -19,6 +19,7 @@ const $empty = (target) => {
   };
 }
 
+
 const $nextAll = (elem, selector) => {
   let siblings = [];
   elem = elem.nextElementSibling;
@@ -29,6 +30,7 @@ const $nextAll = (elem, selector) => {
   }
   return siblings;
 };
+
 
 const $prevAll = (elem, selector) => {
   let siblings = [];

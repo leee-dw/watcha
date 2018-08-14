@@ -65,7 +65,7 @@ export const renderSliderTemplate = (data, url) => {
 
 
 
-
+// background-image:url(https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_264,q_80,w_470/bwft8rqba12og6atoh7c.jpg);
 
 export const renderSlideListsTemplate = (data) => {
   return data.reduce((acc, crr) => {
@@ -77,9 +77,27 @@ export const renderSlideListsTemplate = (data) => {
           <div class="contents__item__content__title">
             <span class="contents__item__content__title__text">${crr.title}</span>
           </div>
+          <span class="contents__item__content__preview">
+            <div class="content__preview content__preview-enter">
+              <div class="content__preview__still-cut" style="background-image:url(https://image.tmdb.org/t/p/w500${crr.backdrop_path})"></div>
+              <div class="content__preview__info__wrapper">
+                <div class="content-preview__overlay"></div>
+                <div class="content__preview__info">
+                  <div class="content__preview__info__title">${crr.title}</div>
+                  <div class="content__preview__info__meta">
+                    <span class="content__preview__info__year"></span>
+                    <span class="content__preview__info__film-rate"></span>
+                    <span class="content__preview__info__running-time"></span>
+                  </div>
+                  <p class="content__preview__info__synopsis">${crr.overview}</p>
+                  <button class="content__preview__info__detail-btn"></button>
+                  <button class="content__preview__info__wish-btn"></button>
+                </div>
+              </div>
+            </div>
+          </span>
         </div>
       </div>
       `
   }, '')
 }
-
