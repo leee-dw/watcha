@@ -78,7 +78,7 @@ export const renderSlideListsTemplate = (data) => {
             <span class="contents__item__content__title__text">${crr.title}</span>
           </div>
           <span class="contents__item__content__preview">
-            <div class="content__preview content__preview-enter">
+            <div class="content__preview">
               <div class="content__preview__still-cut" style="background-image:url(https://image.tmdb.org/t/p/w500${crr.backdrop_path})"></div>
               <div class="content__preview__info__wrapper">
                 <div class="content-preview__overlay"></div>

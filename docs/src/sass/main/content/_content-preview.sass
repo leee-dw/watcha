@@ -1,14 +1,14 @@
 .contents__item__content__preview
   display: none
 
-  
+
 .content__preview
   position: absolute
   left: -41%
   top: -41%
   width: 182%
   height: 182%
-  z-index: 100
+  z-index: -10
   cursor: pointer
   transform: scale(0.54)
   transition: transform 0.4s cubic-bezier(0.5, 0, 0.1, 1) 0s
@@ -16,7 +16,7 @@
 
 .content__preview-enter
   transform: scale(1)
-
+  z-index: 0
 
 .content__preview__still-cut
   width: 100%
@@ -29,6 +29,9 @@
   position: absolute
   left: 0
   top: 0
+  right: 0
+  bottom: 0
+  z-index: 2
   width: 100%
   height: 100%
   background: linear-gradient(to top, rgba(18,18,24,0.7) 10%, transparent 80%)
@@ -41,6 +44,7 @@
   width: 100%
   height: 100%
   background: linear-gradient(to top, rgba(18,18,24,0.7) 10%, transparent 80%)
+  opacity: 1
 
 
 .content__preview__info

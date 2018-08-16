@@ -19,9 +19,13 @@ export class ContentsDetailController {
       event.target.classList.add('point-out');
       $prevAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-negative-translate'));
       $nextAll(event.target.parentNode.parentNode).forEach(el => el.classList.add('has-positive-translate'));
+      event.target.parentNode.children[3].childNodes[1].classList.add('content__preview-enter');
+
       $on(event.target, 'mouseleave', (evt) => {
         event.target.classList.remove('point-out');
         event.target.parentNode.parentNode.classList.remove('has-negative-translate', 'has-positive-translate');
+        event.target.parentNode.children[3].childNodes[1].classList.remove('content__preview-enter');
+
         $nextAll(event.target.parentNode.parentNode)
           .concat($prevAll(event.target.parentNode.parentNode))
           .forEach(el => {
