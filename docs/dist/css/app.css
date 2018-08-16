@@ -907,9 +907,6 @@ a {
 .stretch {
   width: 25%; }
 
-.contents__item__content__preview {
-  display: none; }
-
 .content__preview {
   position: absolute;
   left: -41%;
