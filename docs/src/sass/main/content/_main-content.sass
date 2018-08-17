@@ -6,6 +6,7 @@
   padding: 2.25vw 0
 
 .main__cinemas__list
+  overflow: hidden
 .main__cinemas__list__header
 
 .main__cinemas__list__header__title
@@ -44,16 +45,12 @@
 
 
 .main__cinemas__list__body__slider
-  overflow-x: hidden	
-  overflow-x: -moz-scrollbars-none
-
-  overflow-y: hidden	
-  overflow-y: -moz-scrollbars-none
-
+  // overflow-x: visible	
+  // overflow-y: visible	
   padding: 0 50px
   position: relative
 
-  
+
 .main__cinemas__list__body__slider__contents
   white-space: nowrap
   overflow-x: visible
@@ -149,6 +146,8 @@
   white-space: nowrap
   background: linear-gradient(to top, rgba(18,18,24,0.7) 10%, transparent 80%)
   z-index: 1
+  opacity: 1
+  transition: opacity 500ms
 
 
 
@@ -157,7 +156,7 @@
   bottom: 0
   left: 0
   width: 100%
-  color: #fff
+  color: #fffㅑ
   word-wrap: break-word
   opacity: 0.9
   white-space: pre-line
@@ -167,7 +166,9 @@
 
 .point-out
   background: linear-gradient(to top, rgba(18,18,24,0.7) 10%, transparent 80%)
-  opacity: 0.5
+  opacity: 0
+  transition: opacity 10ms
+
 
 
   

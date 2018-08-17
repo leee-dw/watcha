@@ -1,5 +1,5 @@
 .contents__item__content__preview
-  // display: none
+  visibility: hidden
 
 
 .content__preview
@@ -15,6 +15,7 @@
 
 .content__preview-enter
   transform: scale(1)
+  
 
 .content__preview__still-cut
   width: 100%
@@ -46,20 +47,49 @@
 
 
 .content__preview__info
+  padding: 0 1.1671875vw
+  font-size: 0.9078125vw
   position: absolute
   left: 0
   bottom: 0
-  padding: 0.140625vw
   width: 100%
-  font-size: 1.09375vw
   text-align: left
   transition: opacity 0.4s cubic-bezier(0.5, 0, 0.1, 1) 0s
 
-// .content__preview__info__title
-// .content__preview__info__meta
-// .content__preview__info__year
-// .content__preview__info__film-rate
+.content__preview__info__title
+  font-weight: 500
+  line-height: 1.4
+  font-size: 1.1vw
+  letter-spacing: -.5px
+  white-space: pre-wrap
+  word-wrap: break-word
+
+  
+.content__preview__info__meta
+  margin-bottom: 0.2vw
+
+
+.content__preview__info__year
+  margin-right: 0.32421875vw
+  font-size: 0.85vw
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.7)
+
+.content__preview__info__film-rate
+  border: 1px solid rgba(255, 255, 255, 0.3)
+  padding: 0 0.1vw
+  text-align: center
+  color: rgba(255, 255, 255, 0.7)
+  font-weight: 500
 // .content__preview__info__running-time
-// .content__preview__info__synopsis
+.content__preview__info__synopsis
+  font-size: 0.9vw
+  line-height: 1.4
+  width: 85%
+  white-space: normal
+  text-overflow: ellipsis
+  overflow: hidden
+  color: rgba(255, 255, 255, 0.8)
+  letter-spacing: -.5px
 // .content__preview__info__detail-btn
 // .content__preview__info__wish-btn

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/
  * v2.0 | 20110126
  * License: none (public domain) */
@@ -522,6 +523,9 @@ a {
 .main__cinemas {
   padding: 2.25vw 0; }
 
+.main__cinemas__list {
+  overflow: hidden; }
+
 .main__cinemas__list__header__title {
   margin-bottom: 1.25vw;
   padding: 0 50px;
@@ -624,10 +628,6 @@ a {
     margin-bottom: 8vw; } }
 
 .main__cinemas__list__body__slider {
-  overflow-x: hidden;
-  overflow-x: -moz-scrollbars-none;
-  overflow-y: hidden;
-  overflow-y: -moz-scrollbars-none;
   padding: 0 50px;
   position: relative; }
 
@@ -788,14 +788,16 @@ a {
   top: 0;
   white-space: nowrap;
   background: linear-gradient(to top, rgba(18, 18, 24, 0.7) 10%, transparent 80%);
-  z-index: 1; }
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 500ms; }
 
 .contents__item__content__title {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #fff;
+  color: #fffㅑ;
   word-wrap: break-word;
   opacity: 0.9;
   white-space: pre-line; }
@@ -902,10 +904,14 @@ a {
 
 .point-out {
   background: linear-gradient(to top, rgba(18, 18, 24, 0.7) 10%, transparent 80%);
-  opacity: 0.5; }
+  opacity: 0;
+  transition: opacity 10ms; }
 
 .stretch {
   width: 25%; }
+
+.contents__item__content__preview {
+  visibility: hidden; }
 
 .content__preview {
   position: absolute;
@@ -947,14 +953,48 @@ a {
   opacity: 1; }
 
 .content__preview__info {
+  padding: 0 1.1671875vw;
+  font-size: 0.9078125vw;
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 0.140625vw;
   width: 100%;
-  font-size: 1.09375vw;
   text-align: left;
   transition: opacity 0.4s cubic-bezier(0.5, 0, 0.1, 1) 0s; }
+
+.content__preview__info__title {
+  font-weight: 500;
+  line-height: 1.4;
+  font-size: 1.1vw;
+  letter-spacing: -0.5px;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+.content__preview__info__meta {
+  margin-bottom: 0.2vw; }
+
+.content__preview__info__year {
+  margin-right: 0.32421875vw;
+  font-size: 0.85vw;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7); }
+
+.content__preview__info__film-rate {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0 0.1vw;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500; }
+
+.content__preview__info__synopsis {
+  font-size: 0.9vw;
+  line-height: 1.4;
+  width: 85%;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: -0.5px; }
 
 .footer {
   position: relative;
@@ -1078,6 +1118,10 @@ a {
   display: none;
   width: 220px;
   transition: width 3s; }
+
+.visible {
+  visibility: visible;
+  transition: visibility 300ms; }
 
 .wide {
   transform: scale(1.3); }

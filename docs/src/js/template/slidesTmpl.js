@@ -85,13 +85,13 @@ export const renderSlideListsTemplate = (data) => {
                 <div class="content__preview__info">
                   <div class="content__preview__info__title">${crr.title}</div>
                   <div class="content__preview__info__meta">
-                    <span class="content__preview__info__year"></span>
-                    <span class="content__preview__info__film-rate"></span>
-                    <span class="content__preview__info__running-time"></span>
+                    <span class="content__preview__info__year">${crr.release_date.split('-')[0]+'년'}</span>
+                    <span class="content__preview__info__film-rate">12세</span>
+                    <span class="content__preview__info__running-time">123분</span>
                   </div>
-                  <p class="content__preview__info__synopsis">${crr.overview}</p>
+                  <p class="content__preview__info__synopsis">${!!crr.overview.substring(0,125) ? crr.overview.substring(0,125) + '...' : ''}</p>
                   <button class="content__preview__info__detail-btn"></button>
-                  <button class="content__preview__info__wish-btn"></button>
+                  <i class="content__preview__info__wish-btn material-icons">favorite_border</i>
                 </div>
               </div>
             </div>

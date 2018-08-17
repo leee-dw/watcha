@@ -7,16 +7,16 @@ export class SlideListsModel {
   }
 
 
-  setSlideData() {
-    this.getDavidLynchMovieData(this.SlideListsController.getFirstMovieListData.bind(this));
-    this.getOldPopMovieData(this.SlideListsController.getSecondMovieListData.bind(this));
-    this.getSciFiMovieData(this.SlideListsController.getThridMovieListData.bind(this));
-    this.getGodardMovieData(this.SlideListsController.getFourthMovieListData.bind(this));
-    this.getPopularData(this.SlideListsController.getFifthMovieListData.bind(this));
-    this.getComedyMovieData(this.SlideListsController.getSixthMovieListData.bind(this));
-    this.getBradPittMovieData(this.SlideListsController.getSeventhMovieListData.bind(this));
-    this.getKieslowskiMovieData(this.SlideListsController.getEighthMovieListData.bind(this));
-  }
+  // setSlideData() {
+    // this.getDavidLynchMovieData(this.SlideListsController.getFirstMovieListData.bind(this));
+    // this.getOldPopMovieData(this.SlideListsController.getSecondMovieListData.bind(this));
+    // this.getSciFiMovieData(this.SlideListsController.getThridMovieListData.bind(this));
+    // this.getGodardMovieData(this.SlideListsController.getFourthMovieListData.bind(this));
+    // this.getPopularData(this.SlideListsController.getFifthMovieListData.bind(this));
+    // this.getComedyMovieData(this.SlideListsController.getSixthMovieListData.bind(this));
+    // this.getBradPittMovieData(this.SlideListsController.getSeventhMovieListData.bind(this));
+    // this.getKieslowskiMovieData(this.SlideListsController.getEighthMovieListData.bind(this));
+  // }
 
 
   getNowPlayingData(handler) {
@@ -24,7 +24,7 @@ export class SlideListsModel {
   }
 
 
-  getPopularData(handler) {
+  getPopularData(handler) {   
     loadData(this.movieData.getMovieDataURL('ko', 'popular', 1), handler.bind(this));
   }
 
