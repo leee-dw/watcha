@@ -166,7 +166,7 @@ export class SlideListsController {
   clickSlideListNextBtn() {
 
     const target = event.currentTarget.parentNode.childNodes[1];
-    let slideLists = $qsa('.main__cinemas__list__body__slider__contents');
+    let slideLists = $qsa('.main__cinemas__list__body__slider__contents');    
     let slideContentsWidth = $qs('.main__cinemas__list__body__slider__contents__item').clientWidth * 5;
     let slideContents = $qsa('.main__cinemas__list__body__slider__contents__item', target);
     let nodeArr = [...slideContents];
@@ -178,6 +178,8 @@ export class SlideListsController {
 
     slideLists.forEach((list, idx) => {
       if (list === target) {
+        console.log(list);
+        
         this.count[idx]++;
         this.count[idx] = this.count[idx] % 4;
         target.style.transform = `translateX(-${slideContentsWidth * this.count[idx]}px)`;
@@ -188,6 +190,7 @@ export class SlideListsController {
 
           arr[0].forEach(elem => {
             let clone = elem.cloneNode(true);
+            
             list.append(clone);
           })
 

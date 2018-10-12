@@ -5,8 +5,8 @@ export class MovieData {
     this.key = '?api_key=64391ca210dbae0d44b0a622177ef8d3';
   }
 
-  getMovieDataURL(language, status, page) {
-    return `${this.url}movie/${status}${this.key}&language=${language}&page=${page}`
+  getMovieDataURL(language, page) {
+    return `https://api.themoviedb.org/3/movie/now_playing?api_key=64391ca210dbae0d44b0a622177ef8d3&language=ko&page=1`
   }
 
   getOldPopDataURL(language) {
